@@ -10,11 +10,11 @@ import SwiftData
 
 struct SIGTabView: View {
     @Environment(\.modelContext) private var context
-    private var sigList: [SIGModel] = []
+    @Query private var sigList: [SIGModel] = []
     
     var body: some View {
         ScrollView {
-            List {
+            ScrollView {
                 ForEach(sigList) { sig in
                     SIGCard(sig)
                 }
@@ -23,6 +23,7 @@ struct SIGTabView: View {
         
                 Button("Add SIG", systemImage: "person") {
                     context.insert(SIGModel(name: "Hungers Games", realName: "Archery Club", desc: "...", session: .both, category: .sport, image: "blank", whatsappLink: "null", pp: "null"))
+                    try? context.save()
                 }
                 Button("Delete", role: .destructive) {
                     do {
@@ -47,14 +48,7 @@ struct SIGTabView: View {
 }
 
 
-
-//extension UserDefaults {
-//    var hasSeededData: Bool {
-//        get {bool(forKey: "hasSeededData")}
-//        set {set(newValue, forKey: "hasSeededData")}
-//    }
-//}
-
 #Preview {
     SIGTabView()
+        .modelContainer(for:[SIGModel.self, EventModel.self])
 }

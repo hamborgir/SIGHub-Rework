@@ -24,4 +24,3 @@ extension View {
         modifier(CapsuleText())
     }
 }
-

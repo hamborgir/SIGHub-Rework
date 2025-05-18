@@ -7,17 +7,31 @@
 
 import SwiftUI
 
-struct CardView: View {
+
+struct CardComp: View {
     var body: some View {
-        Group {
+        VStack(spacing: 0) {
             Color.red
+            Color.blue
+                .overlay(alignment: .topLeading) {
+                    VStack(alignment: .leading) {
+                        Text("SIG Real Name")
+                        Text("SIG Name")
+                        HStack {
+                            Text("Category")
+                                .capsulize()
+                            Text("Shift")
+                                .capsulize()
+                        }
+                    }
+                }
         }
-        .frame(width: 177, height: 144)
-//        .scaledToFill()
-//        .aspectRatio(177/144,contentMode: .fit)
+//        .frame(width: 177, height: 144)
+        .aspectRatio(177/144, contentMode: .fit)
+        .scaledToFit()
     }
 }
 
 #Preview {
-    CardView()
+    CardComp()
 }
