@@ -21,12 +21,13 @@ final class SIGModel: Identifiable {
     var image: String
     var whatsappLink: String
     var pp: String
+    var password: String
     
     // relationship
     @Relationship(deleteRule: .cascade, inverse: \EventModel.sig) var events: [EventModel]
     
     // init
-    init(id: String = UUID().uuidString, name: String, realName: String, desc: String, session: Session, category: Category, image: String, whatsappLink: String, pp: String, events: [EventModel] = []) {
+    init(id: String = UUID().uuidString, name: String, realName: String, desc: String, session: Session, category: Category, image: String, whatsappLink: String, pp: String, events: [EventModel] = [], password: String) {
         self.id = id
         self.name = name
         self.realName = realName
@@ -37,6 +38,7 @@ final class SIGModel: Identifiable {
         self.whatsappLink = whatsappLink
         self.pp = pp
         self.events = events
+        self.password = password
     }
     
     static func getData() -> [SIGModel] {
@@ -49,7 +51,8 @@ final class SIGModel: Identifiable {
                 category: .sport,
                 image: "archery_club",
                 whatsappLink: "https://chat.whatsapp.com/archery",
-                pp: "archery_pp"
+                pp: "archery_pp",
+                password: "admin"
             ),
             .init(
                 name: "Creative Minds",
@@ -59,7 +62,8 @@ final class SIGModel: Identifiable {
                 category: .art,
                 image: "art_craft_club",
                 whatsappLink: "https://chat.whatsapp.com/artcraft",
-                pp: "art_pp"
+                pp: "art_pp",
+                password: "admin"
             ),
             .init(
                 name: "Growth Hub",
@@ -69,7 +73,8 @@ final class SIGModel: Identifiable {
                 category: .growth,
                 image: "growth_hub",
                 whatsappLink: "https://chat.whatsapp.com/growthhub",
-                pp: "growth_pp"
+                pp: "growth_pp",
+                password: "admin"
             ),
             .init(
                 name: "Stage Stars",
@@ -79,7 +84,8 @@ final class SIGModel: Identifiable {
                 category: .entertainment,
                 image: "stage_stars",
                 whatsappLink: "https://chat.whatsapp.com/stagestars",
-                pp: "theater_pp"
+                pp: "theater_pp",
+                password: "admin"
             ),
             .init(
                 name: "Fit & Fun",
@@ -89,7 +95,8 @@ final class SIGModel: Identifiable {
                 category: .sport,
                 image: "fit_fun",
                 whatsappLink: "https://chat.whatsapp.com/fitfun",
-                pp: "fitness_pp"
+                pp: "fitness_pp",
+                password: "admin"
             ),
             .init(
                 name: "Ink & Paper",
@@ -99,7 +106,8 @@ final class SIGModel: Identifiable {
                 category: .art,
                 image: "ink_paper",
                 whatsappLink: "https://chat.whatsapp.com/inkpaper",
-                pp: "writing_pp"
+                pp: "writing_pp",
+                password: "admin"
             )
         ]
         

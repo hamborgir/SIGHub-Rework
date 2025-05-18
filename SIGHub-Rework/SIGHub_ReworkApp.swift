@@ -26,13 +26,14 @@ struct SIGHub_ReworkApp: App {
             ContentView()
                 .modelContainer(container)
                 .onAppear {
-                    preloadSampleData(context: container.mainContext)
+                    
 //                    do {
 //                        try container.mainContext.delete(model: SIGModel.self)
 //                        try container.mainContext.delete(model: EventModel.self)
 //                    } catch {
 //                        fatalError("failed to delete: \(error.localizedDescription)")
 //                    }
+                    preloadSampleData(context: container.mainContext)
 
                 }
         }

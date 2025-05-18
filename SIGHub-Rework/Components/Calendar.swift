@@ -1,10 +1,12 @@
 import SwiftUI
+import SwiftData
 
 struct CalendarComp: View {
     @Binding var currentDate: Date
     @Binding var selectedDate: Date?
     
-    var events: [Event] = []// Your array of Event objects
+//    var events: [Event] = []// Your array of Event objects
+    @Query var events: [EventModel] = []
     
     // Calendar utilities
     private var calendar: Calendar {
@@ -187,13 +189,6 @@ struct CalendarView_Previews: PreviewProvider {
         
         @State var selectedDate: Date? = nil
         @State var currentMonthDate: Date = Date()
-        
-        // Sample events
-        let events = [
-            Event(title: "Meeting", date: dateFormatter.date(from: "2025-05-15")!),
-            Event(title: "Lunch", date: dateFormatter.date(from: "2025-05-20")!),
-            Event(title: "Conference", date: dateFormatter.date(from: "2025-05-25")!)
-        ]
         
         return CalendarComp(currentDate: $currentMonthDate, selectedDate: $selectedDate)
     }
