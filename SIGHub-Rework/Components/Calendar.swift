@@ -15,7 +15,7 @@ struct CalendarComp: View {
     
     private var monthYear: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
+        formatter.dateFormat = "MMM yyyy"
         return formatter.string(from: currentDate)
     }
     
@@ -66,6 +66,11 @@ struct CalendarComp: View {
         VStack(alignment: .leading, spacing: 20) {
             // Month navigation header
             HStack {
+                Text(monthYear)
+                    .frame(width: 100, alignment: .center)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                
                 Spacer()
                 Button(action: { changeMonth(by: -1) }) {
                     Image(systemName: "chevron.left")
@@ -75,12 +80,9 @@ struct CalendarComp: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 
-                
-                Text(monthYear)
-                    .frame(width: 200, alignment: .center)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                
+                Button("Today", action: changeToToday)
+                    .padding(.horizontal, 20)
+                    .buttonStyle(.bordered)
                 
                 Button(action: { changeMonth(by: 1) }) {
                     Image(systemName: "chevron.right")
@@ -89,9 +91,9 @@ struct CalendarComp: View {
                         .background(.darkerGray)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-                Spacer()
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 30)
+//            .background(Color.red)
             
             // Calendar grid
             VStack(spacing: 8) {
@@ -155,17 +157,13 @@ struct CalendarComp: View {
                         }
                     }
                 }
-                Spacer()
-                Button("Today", action: changeToToday)
-                    .buttonStyle(.bordered)
-                    .padding(.horizontal, 20)
             }
-            .frame(height: 355, alignment: .topLeading)
+            .frame(alignment: .topLeading)
 //            .background(Color.red)
             .padding(.horizontal)
         }
         .padding(.top)
-//        .frame(height: 450)
+//        .frame(height: 400)
 //        .background(Color.red)
     }
     
