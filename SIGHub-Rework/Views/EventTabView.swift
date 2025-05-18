@@ -71,8 +71,8 @@ struct EventTabView: View {
                 } else {
                     ScrollView {
                         LazyVStack {
-                            ForEach(events) { item in
-                                Text(item.title)
+                            ForEach(events) { event in
+                                RowItem(event: event)
                             }
                         }
                     }
