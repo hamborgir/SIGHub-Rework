@@ -13,6 +13,7 @@ struct EventTabView: View {
     
     @State private var selectedDate: Date? = nil
     @State private var currentMonthDate: Date = Date()
+    @State private var isShowingSheet: Bool = false
     
     private var calendar: Calendar {
         var calendar = Calendar.current
@@ -82,13 +83,16 @@ struct EventTabView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    
+                    isShowingSheet.toggle()
                 } label: {
                     Image(systemName: "plus.circle")
                 }
-                
             }
         }
+        .sheet(isPresented: $isShowingSheet) {
+            AddEventForm()
+        }
+
     }
 }
 
