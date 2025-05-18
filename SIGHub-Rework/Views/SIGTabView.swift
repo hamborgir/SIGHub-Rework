@@ -10,28 +10,16 @@ import SwiftData
 
 struct SIGTabView: View {
     @Environment(\.modelContext) private var context
+    
     @Query private var sigList: [SIGModel] = []
+    @State private var searchText: String = ""
+    
+    private let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        ScrollView {
-            ScrollView {
-                ForEach(sigList) { sig in
-                    SIGCard(sig)
-                }
-            }
-        }
         
-                Button("Add SIG", systemImage: "person") {
-                    context.insert(SIGModel(name: "Hungers Games", realName: "Archery Club", desc: "...", session: .both, category: .sport, image: "blank", whatsappLink: "null", pp: "null"))
-                    try? context.save()
-                }
-                Button("Delete", role: .destructive) {
-                    do {
-                        try context.delete(model: SIGModel.self)
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                }
+        ScrollableCards(sigList: sigList, columns: columns)
+            
     }
     
     func reloadData() {
@@ -43,6 +31,21 @@ struct SIGTabView: View {
         
         for sig in SIGModel.getData() {
             context.insert(sig)
+        }
+    }
+}
+
+struct ScrollableCards: View {
+    var sigList: [SIGModel]
+    var columns: [GridItem]
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(sigList) { sig in
+                    CardComp(sig: sig)
+                }
+            }
         }
     }
 }

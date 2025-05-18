@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EventRowItem: View {
+struct EventRowComp: View {
     let title: String = "Event Title"
     let sigName: String = "SIG Name"
 //    let event: EventModel
@@ -43,7 +43,7 @@ struct EventRowItem: View {
     }
 }
 
-struct EventRowDate: View {
+struct EventDateRectangle: View {
     let date: Date
     
     init(date: Date = Date()) {
@@ -85,5 +85,5 @@ struct EventRowDate: View {
 }
 
 #Preview {
-    EventRowItem()
+    EventRowComp()
 }
