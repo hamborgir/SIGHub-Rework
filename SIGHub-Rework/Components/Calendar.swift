@@ -162,7 +162,6 @@ struct CalendarComp: View {
             .frame(height: 355, alignment: .topLeading)
 //            .background(Color.red)
             .padding(.horizontal)
-            Spacer()
         }
         .padding(.top)
 //        .frame(height: 450)
