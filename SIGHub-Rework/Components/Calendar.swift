@@ -59,6 +59,7 @@ struct CalendarComp: View {
     
     private func changeToToday() {
         selectedDate = Date.now
+        currentDate = Date.now
     }
     
     var body: some View {
